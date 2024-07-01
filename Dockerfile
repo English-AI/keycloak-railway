@@ -17,4 +17,4 @@ COPY --from=builder /opt/keycloak/ /opt/keycloak/
 
 ENTRYPOINT ["/opt/keycloak/bin/kc.sh"]
 
-CMD ["start", "--optimized", "--import-realm", "--spi-email-template-provider=freemarker-plus-mustache", "--spi-email-template-freemarker-plus-mustache-enabled=true", "--spi-theme-cache-themes=false", "--spi-theme-cache-templates=false", "--hostname-strict=false", "--proxy-headers=xforwarded"]
+CMD ["start", "--optimized", "--import-realm", "--spi-email-template-provider=freemarker-plus-mustache", "--spi-email-template-freemarker-plus-mustache-enabled=true", "--spi-theme-cache-themes=false", "--spi-theme-cache-templates=false", "--hostname-strict=false", "--proxy-headers=xforwarded", "--spi-theme-static-max-age=-1"]
