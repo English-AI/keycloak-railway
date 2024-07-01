@@ -7,9 +7,6 @@ ADD --chown=keycloak:keycloak https://github.com/wadahiro/keycloak-discord/relea
 ADD --chown=keycloak:keycloak https://github.com/English-AI/public/releases/download/keycloak/io.phasetwo.keycloak-keycloak-themes-0.30.jar /opt/keycloak/providers/io.phasetwo.keycloak-keycloak-themes-0.30.jar
 ADD --chown=keycloak:keycloak https://github.com/English-AI/public/releases/download/keycloak/phasetwo-admin-ui-25.0.0.jar /opt/keycloak/providers/phasetwo-admin-ui-25.0.0.jar
 
-COPY /theme/keywind /opt/keycloak/themes/keywind
-
-
 RUN /opt/keycloak/bin/kc.sh build
 
 FROM quay.io/keycloak/keycloak:latest
@@ -20,4 +17,4 @@ COPY --from=builder /opt/keycloak/ /opt/keycloak/
 
 ENTRYPOINT ["/opt/keycloak/bin/kc.sh"]
 
-CMD ["start", "--optimized", "--import-realm", "--spi-email-template-provider=freemarker-plus-mustache", "--spi-email-template-freemarker-plus-mustache-enabled=true", "--spi-email-template-freemarker-enabled=false". "--spi-theme-cache-themes=false", "--proxy-headers=xforwarded"]
+CMD ["start-dev", "--import-realm", "--spi-email-template-provider=freemarker-plus-mustache", "--spi-email-template-freemarker-plus-mustache-enabled=true", "--spi-theme-cache-themes=false", "--proxy-headers=xforwarded"]
